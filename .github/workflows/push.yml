@@ -1,0 +1,15 @@
+name: Backdate Grass
+on: push
+jobs:
+  backdate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Commit yesterday
+        run: |
+          git config --global user.name "ckdl6354"
+          git config --global user.email "본인의깃허브이메일"
+          git commit --allow-empty -m "어제 잔디 살리기" --date="yesterday 23:50:00"
+          git push origin HEAD
